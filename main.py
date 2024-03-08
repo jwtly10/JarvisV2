@@ -23,6 +23,7 @@ while True:
         print("Can't receive frame (stream end?). Exiting ...")
         break
 
+    image = cv2.flip(image, 1)
     rgb_image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 
     results = hands.process(rgb_image)
@@ -84,8 +85,7 @@ while True:
 
     cv2.rectangle(image, (bin_pos[0] - 50, bin_pos[1] - 50), (bin_pos[0] + 50, bin_pos[1] + 50), bin_color, 2)
 
-
-    cv2.imshow('Hand Tracking', image)
+    cv2.imshow("Hand Tracking", image)
 
     if cv2.waitKey(1) & 0xFF == 27:
         break
